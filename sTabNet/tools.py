@@ -307,7 +307,7 @@ def random_walk(graph:nx.Graph, node:int, steps:int = 4, p:float=1.0, q:float=1.
    
    """
 
-   if nx.is_isolate(G, node):
+   if nx.is_isolate(graph, node):
         rw = [str(node)]
    else:
        rw = [str(node),]
@@ -376,7 +376,7 @@ def mapping_rw(rws=None, features=None):
     """
     rw_list = [i for i in range(len(rws))]
     A = pd.DataFrame(0, columns=rw_list, index=features)
-    for i in range(len(random_walks)):
+    for i in range(len(rws)):
         rw = list(map(int, rws[i]))
         for j in rw:
             A.loc[features[j],i] = 1
